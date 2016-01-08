@@ -3,35 +3,34 @@ require "unirest"
 
 module ChicagoBusiness
   class Business
-    attr_reader :job_titles, :department, :name, :salary
+    attr_reader :job_titles, :city, :name, :doing_business_as_name
 
     def initialize(input_options)
-      @legal_name = input_options["legal_name"]
-      @department = input_options["department"]
+      @license_description = input_options["license_description"]
+      @city = input_options["city"]
       @name = input_options["name"]
-      @salary = input_options["employee_annual_salary"].to_i
+      @doing_business_as_name = input_options["doing_business_as_name"]
     end
 
     def self.all
       data_array = Unirest.get('https://data.cityofchicago.org/resource/uupf-x98q.json').body
-      create_employees(data_array)
+      create_businesses(data_array)
     end
 
     def self.find(input_search_terms)
       data_array = Unirest.get("https://data.cityofchicago.org/resource/uupf-x98q.jsons?$q=#{input_search_terms}").body
-      create_employees(data_array)
+      create_businesses(data_array)
     end
 
     private
 
-    def self.create_employees(input_data_array)
-      employees = []
-      input_data_array.each do |employee_data|
-        employees << Employee.new(employee_data)
+    def self.create_businesses(input_data_array)
+      businesses = []
+      input_data_array.each do |business_data|
+        businesses << Business.new(business_data)
       end
-      employees
+      businesses
     end
   end
-end
 end
 

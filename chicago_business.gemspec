@@ -6,7 +6,7 @@ require 'chicago_business/version'
 Gem::Specification.new do |spec|
   spec.name          = "chicago_business"
   spec.version       = ChicagoBusiness::VERSION
-  spec.authors       = ["zacharysimon"]
+  spec.authors       = ["zachary simon"]
   spec.email         = ["zps1009@gmail.com"]
 
   spec.summary       = %q{Returns data about businesses registered in Chicago}

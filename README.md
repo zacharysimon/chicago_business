@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+to start, run biz = ChicagoBusiness::Business.all
 
 ## Development
 
